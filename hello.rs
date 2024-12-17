@@ -87,16 +87,36 @@
 
 // Remove a line in the code to make it compile 
 
+// fn main() {
+//     let mut x: i32 = 1; 
+//     x = 7;
+//     // Shadowing re-binding
+//     let mut x = x;  // this line is not needed just fancy and it did not stop anything from working.
+//     x += 3;
+
+//     let y = 4;
+//     // Shadowing
+//     let y = "I can also be bound to text!";
+
+//     println!("Ayomide!");
+// }
+
+
+// unused variable
+
+// Fix the warning below with:
+
+// Only one Solution
+// Two distinct solutions 
+
+
+// NOTE: none of the solutions is to remove the line let x = 1
+
+
+// #[allow(unused_variables)]
+
 fn main() {
-    let mut x: i32 = 1; 
-    x = 7;
-    // Shadowing re-binding
-    let x = x;
-    x += 3;
-
-    let y = 4;
-    // Shadowing 
-    let y = "I can also be bound to text!";
-
-    println!("Success!");
+    let _x = 1;
 }
+
+// Warning: unused variable `x`
