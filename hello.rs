@@ -627,16 +627,576 @@
 
 ////////////////
 // don't modify code in main!
+// fn main() {
+//     let s1 = String::from("Hello, world");
+//     let s2: String = takes_ownership(s1);
+
+//     println!("{}", s2);
+// }
+
+// //only modify the code below!
+// fn takes_ownership(s: String) -> String {
+//     println!("{}", s);
+//     s
+// }
+
+// fn main() {
+//     let s = give_ownership();
+//     println!("{}", s);
+// }
+
+// //Only modify the code below!
+// fn give_ownership() -> String {
+//     let s = String::from("hello, world");
+//     // Convert String to vec
+//     // let _s = s.clone().into_bytes();    //Instead of using clone just comment out this line and the code will work just fine
+//     let _s = s.as_bytes();    //Instead of using clone just comment out this line and the code will work just fine
+//     println!("{}", s);
+//     s
+// }
+
+// i Need solution to thsi Equation
+
+// let s = String::from("hello");
+// let bytes = s.into_bytes();
+
+// assert_eq!(&[104, 101, 108,108, 111][..], &bytes[..]);
+
+// Fix the error without removing code line
+
+// fn main() {
+//     let s = String::from("hello, world");
+
+//     print_str(s);
+
+//     println!("{}", s);
+// }
+
+// // fn print_str(s: String) -> String {
+// //     println!("{}", s);
+// //     s
+// // }
+
+// fn print_str(s: String) {
+//     println!("{}", s);
+// }
+
+// // Don't use clone, use copy instead
+// fn main() {
+//     // let x = (1, 2, (), "hello".to_string());
+//     // let y = x.clone();
+//     let x: (i32, i32, (), &str) = (1, 2, (), "hello");
+//     let y: (i32, i32, (), &str) = x;
+//     println!("{:?}, {:?}", x, y);
+// }
+
+// fn main() {
+//     let x = (1, 2, (), "hello"); // All types in this tuple implement `Copy`
+//     let y = x; // Copy semantics are used here
+
+//     println!("{:?}, {:?}", x, y);
+// }
+
+// Mutability
+// mutabulity can be changed when ownership is transferred
+
+// fn main() {
+//     let s = String::from("hello, ");
+//     // let s = "hello";
+
+//     // Modify this line only !
+//     let mut s1 = s;
+
+//     s1.push_str("world");
+
+//     println!("{}", s1);
+//     // so what we did above was that we push ("World") to s
+
+//     println!("Success!");
+// }
+
+// fn main() {
+//     let x = Box::new(5);
+
+//     let mut y: Box<i32> = Box::new(1);   // Implement this line, don't change other lines!
+
+//     *y = 4;
+
+//     assert_eq!(*x, 5);
+
+//     println!("Success!");
+// }
+
+// Partial move
+// within the destructuring of a singlr vaariable, both by-move and by-reference pattern bindings can be used at the same time.
+//  Doing this will result in a partial move of the variable, which means that part of the variable will be moved while other parts stay.
+//  In Such a case, the parent variable cannot be used afterwards as a whole, however the parts that are only referenced (and not moved) can still be used.
+
+// fn main() {
+//     #[derive(Debug)]
+//     struct Person {
+//         name: String,
+//         age: Box<u8>,
+//     }
+
+//     let person: Person = Person {
+//         name: String::from("Alice"),
+//         age: Box::new(20),
+//     };
+
+//     // `name` is moved out of person, but `age` is referenced
+//     let Person { ref name, ref age } = person;
+
+//     println!("The person's age is {}", age);
+
+//     println!("The person's name is {}", name);
+
+//     //Error! borrow of partially moved value: `person` partial move occurs
+//     println!("The person struct is {:?}", person);
+
+//     // `person` cannot be used but `person.age` can be used as it is not moved
+//     println!("The person's age from person struct is {}", person.age );
+// }
+
+// fn main() {
+//     let t: (String, String) = (String::from("hello"), String::from("world"));
+
+//     let _s = t.0;
+
+//     //Modify this line only, don't use `_s`
+//     println!("{:?}", t.1);
+// }
+
+// fn main() {
+//     let t: (String, String) = (String::from("hello"), String::from("world"));
+
+//     //Fill the blanks
+//     let (s1, s2) = t.clone();
+
+//     println!("{:?}, {:?}, {:?}", s1, s2, t); //
+// }
+
+// fn main() {
+//     let mut s = String::from("hello");
+
+//     change(&mut s);
+//     println!("{}", s);
+// }
+
+// fn change(some_string: &mut String) {
+//     some_string.push_str(" world");
+
+// }
+
+// let mut s = String::from("Hello");
+
+// let r1 = &s; // no problem
+// let r2 = &s; // no problem
+// let r3 = &mut s; // BIG PROBLEM
+
+// println!("{},{}, and {}", r1, )
+
+// let mut s = String::from("hello");
+
+// {
+//     let r1 = &mut s;
+// }   // r1 goes out of scope here, so we can make a new reference with no problems.
+
+// let r2 = &mut s;
+
+// let mut s = String::from("hello");
+
+// let r1 = &s; // no problem
+// let r2 = &s; // no problem
+// println!("?{} and {}", r1, r2);
+// // variables r1 and r2 will not be used after this point
+
+// let r3 = &mut s; // no problem
+// println!("{}, r3");
+
+// fn main() {
+//     let reference_to_nothing = dangle();
+// }
+
+// fn dangle() -> String {
+//     let s = String::from("hello");
+
+//     s
+// }
+
+// this line of codes give me more understaning of how to print the main value of integers
+
+// fn main() {
+//     let x: i32 = 5;
+//     // Fill the blank
+//     let p: &i32 = &x;
+
+//     let o: &i32 = &p;
+
+//     println!("the memory address of x is {:p}", p); // One possible output: 0x16fa3ac
+//     println!("the memory address of x is {:o}", o); // One possible output: 0x16fa3ac
+// }
+
+// fn main() {
+//     let x = 5;
+//     let y = &x;
+
+//     // Modify this line only
+//     assert_eq!(5, *y);
+
+//     println!("Success!");
+// }
+
+// Fix error
+// fn main() {
+//     let s = String::from("hello, ");
+
+//     borrow_object(&s);
+
+//     println!("{}", s);
+// }
+
+// fn borrow_object(s: &String) {}
+
+// Fix error
+// fn main()  {
+//     let mut s: String = String::from("hello, ");
+
+//     push_str(&mut s);
+
+//     println!("Success!");
+// }
+
+// fn push_str(s: &mut String) {
+//     s.push_str("world")
+// }
+
+// fn main() {
+//     let mut s = String::from("hello, ");
+
+//     // Fill the blank to make it work
+//     let p = &mut s;
+
+//     p.push_str("world");
+
+//     println!("Success!");
+// }
+
+// fn main()  {
+//     let c = '@';
+
+//     let r1 = &c;
+//     // Fill the blank, dont change other code
+//     let ref r2 = c;
+
+//     assert_eq!(*r1,  *r2);
+
+//     // Check the equality of the two address strings
+//     assert_eq!(get_addr(r1), get_addr(r2));
+
+//     println!("Success!");
+// }
+
+// // Get memory address string
+// fn get_addr(r: &char) -> String {
+//     format!("{:p}", r)
+// }
+
+// Borrowing rules
+
+// Removes something to make it work
+// Don't remove a whole line !
+
+// fn main() {
+//     let s = String::from("hello");
+
+//     let r1 = &s;
+//     let ref r2 =  s;
+
+//     println!("{}, {},", r1, r2);
+
+//     println!("s: {}", s); // This line really show that s still have the value and it 100% Borrowed
+
+//     println!("Success!");
+// }
+
+// Mutability
+// Error: Borrow an immutable object as mutable
+
+// fn main() {
+//     // Fix error by modifying this line
+//     let mut s = String::from("hello, ");
+
+//     borrow_object(&mut s);
+
+//     println!("Success!");
+// }
+
+// fn borrow_object(s: &mut String) {
+//     println!("{}", s);
+// }
+
+// Borrow a mutable object as immutable
+
+// This code has no errors!
+
+// My review = am so surprice it works WOW this is massive......
+
+// fn main() {
+//     let mut s = String::from("hello, ");
+
+//     borrow_object(&s);
+
+//     s.push_str("world");
+
+//     println!("Success!");
+//     println!("{}", s);
+// }
+
+// fn borrow_object(s: &String) {
+//     println!("{}", s)
+// }
+
+//comment one line to make it work
+
+// fn main() {
+//     let mut s = String::from("hello, ");
+
+//     let r1 = &mut s;
+//     r1.push_str("world");
+//     // let r2 = &mut s;
+//     // r2.push_str("!");
+
+//     println!("{}", r1);
+// }
+
+// fn main() {
+//     let mut s = String::from("hello, ");
+
+//     let r1 = &mut s;
+//     let r2 = &mut s;
+
+//     // Add one line below to make a compiler error: cannot borrow `s` as mutable  more than once at a time
+//     // You can't use r1 and r2 at the same time
+//     println!("{}, {}", r1, r2)
+// }
+
+// my ideal of rust compiler is that
+// it is the best compiler i ever work with //C + phython + Javascript + ReactJS//
+
+// STRING vs. &STR
+
+// . A String is a heap-allocated string type that own its contents and is mutable
+
+// .A &str is an immutable sequence of UTF-8 bytes in memory, it does not own the underlying data and is immutable
+
+// .Think of Str as a view on a sequence of characters (stored as UTF-8bytes) in memory
+
+// Use &str  if you want to a view of a string
+// &str is more lightweight and efficient than String
+// Use String if you need to own the data and be able to mutate it
+
+// Example String slice
+// The string slice world points to a sequence of characters stored on the heap
+
+// let s:String = String::from("hello world");
+
+// let hello = &s[0..5];
+// let world = &[6..11];
+
+// String
+
+// the type of string literal "hello, world" is &str, e.g let s: &str = "hello, world".
+
+// Str and &str
+
+// we can't use str type in normal ways, but we can use &str.
+
+// Fix error without adding new line
+// fn main() {
+//     let s: &str = "hello";
+//     // let s:String = String::from("hello world");
+
+//     println!("Success");
+// }
+
+// We can only use str by boxing it, & can be used to convert Box<str> to &str
+
+// Fix the error with at least two solutions
+// fn main() {
+//     let s: Box<str> = "Hello, world".into();
+//     greetings(&s)
+// }
+
+// fn greetings(s: &str) {
+//     println!("{}", s)
+// }
+
+// String
+// String type is defined in std and stored as a vector of bytes(vec), but guaranteed to always be a valid UTF-8 sequence. String is heap allocated, growable and not null
+
+// fill in the blank
+// fn main() {
+//     let mut s: String = String::from("");
+//     s.push_str("hello, world");
+//     s.push('!');
+
+//     assert_eq!(s, "hello, world!");
+
+//     println!("{}", s);
+
+//     println!("Success!");
+// }
+
+// Fix all errors without adding newline
+// fn main() {
+//     let mut s:String = String::from("hello");
+//     s.push(',');
+//     s.push_str(" world");
+//     s += "!";  // am surprice that i can add to a string using this line that is sick isnt it?
+
+//     println!("{}", s);
+// }
+
+// Repalce can be used to replace substring
+
+// Fill the blank
+
+// fn main() {
+//     let s: String = String::from("I like dogs");
+//     // Allocate new memory and store the modified string there
+
+//     let s1 = s.replace("dogs", "cats"); //  i can see that i have to print similar message.
+
+//     assert_eq!(s1, "I like cats");
+
+//     println!("Success!");
+// }
+
+// More String method can be found under String module.
+
+// You can concat a string with &str, and String's ownership can be moved to another variable
+
+// Fix errors without removing any line
+// fn main() {
+//     let s1 = String::from("hello, ");
+//     let s2 = String::from("world!");
+//     // let s3 = s1.clone() + &s2;
+//     let s3 = s1 + s2.as_str(); // &String -> $str
+//     assert_eq!(s3, "hello, world!");
+//     println!("{}", s3);
+//     // println!("{}", s1);
+// }
+
+// &str and String
+// Opposite to the seldom using of str, &str and String are used everywhere!
+
+// &str can be converted to string in two ways
+
+// Fix error with at least two solutions
+
+// fn main() {
+//     let s: &str = "Hello, world";
+//     // greetings(s.to_string())  // &str -> String
+//     // greetings(String::from(s))  // &str -> String
+//     greetings(s.to_owned())  // &str -> String
+// }
+
+// fn greetings(s: String) {
+//     println!("{}", s)
+// }
+
+
+
+
+
+// We can use String::from or to_String to convert a &str to string
+
+// We can use approches to fix the error and without adding a new line
+
+
+
+// fn main() {
+//     let s: String = "hello, world".to_string();
+//     let s1: &str = &s;  // &String -> &str
+//     let s1: &str = s.as_str(); // &String -> &str
+
+//     println!("Success!");
+// }
+
+
+
+
+// String escapes
+
+// fn main() {
+//     // you can use escapes to write bytes by their hexadecimal values
+//     // Fill the blank below to show "i'm writing Rust"
+//     let byte_escape = "i'm writing Ru\x73\x74!";
+//     println!("What are you doing \x3f (\\x3F means ?) {}", byte_escape);
+
+//     //  ...Or Unicode code points.
+//     let unicode_codepoint = "\u{211D}";
+//     let character_name = "\"DOUBLE-STRUCK CAPITAL R\"";
+
+//     println!("Unicode character {} (u+211D) is called {}",
+//                                     unicode_codepoint, character_name);
+
+//     let long_string = "String literals
+//                          can span multiple lines.
+//                         The linebreak and indentation here \
+//                         can ne escaped too!";
+//     println!("{}", long_string);
+// }
+
+
+
+// Sometimes there are just too many characters that need to be escaped or
+// much more convenient to write a string out as-is. This is where raw string literals come into play.
+
+// fill in the blank and fix the errors
+
+// this code is not working cause no solution to follow
+
+// fn main() {
+//     let raw_str = r"Escapes don't work here: \x3f \u\{211D}";
+//     // modify above line to make it work 
+//     assert_eq!(raw_str, "Escape don't work here: ? R");
+
+//     // If you need quote in a raw string, add a pair of #s
+//     let quotes = r#"And then i said: "There is no escape!""#;
+//     println!("{}", quotes);
+
+//     // If you need quote "# in your string, just use more #s in the delimiter.
+//     // You can use up to 65535 #s.
+//     let delimiter = r###"A string with" # in it. And even "##!"###;
+//     println!("{}", delimiter); 
+// }
+
+
+
+// String index
+
+// You can't use index to Access a char in a string, but you can use slice &s1[start..end].
+
+
+
+
 fn main() {
-    let s1 = String::from("Hello, world");
-    let s2: String = takes_ownership(s1);
+    let s1:String = String::from("hi, #@");
+    let h = s1[0...]; // Modify this line to fix the error, tips: `h` only takes 1 byte
+    assert_eq!(h, "h");
 
-    println!("{}", s2);
+    let h1 = &s1[3..5];  // Modify this line to fix the error, tips: `@` take 3
+    assert_eq!(h1, "#");
+    
+    println!("Success!");
 }
 
-//only modify the code below!
-fn takes_ownership(s: String) -> String {
-    println!("{}", s);
-    s
-}
+
+
+
+
+
+
 
