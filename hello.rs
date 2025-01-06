@@ -1140,7 +1140,7 @@
 //     let character_name = "\"DOUBLE-STRUCK CAPITAL R\"";
 
 //     println!("Unicode character {} (u+211D) is called {}",
-//                                     unicode_codepoint, character_name);
+//   w                                  unicode_codepoint, character_name);
 
 //     let long_string = "String literals
 //                          can span multiple lines.
@@ -1182,21 +1182,101 @@
 
 
 
-fn main() {
-    let s1:String = String::from("hi, #@");
-    let h = s1[0...]; // Modify this line to fix the error, tips: `h` only takes 1 byte
-    assert_eq!(h, "h");
+// fn main() {
+//     let s1:String = String::from("hi,#@");
+//     let h = &s1[0..1]; // Modify this line to fix the error, tips: `h` only takes 1 byte
+//     assert_eq!(h, "h");
 
-    let h1 = &s1[3..5];  // Modify this line to fix the error, tips: `@` take 3
-    assert_eq!(h1, "#");
-    
+//     let h1 = &s1[3..4];  // Modify this line to fix the error, tips: `@` take 3
+
+//     assert_eq!(h1, "#");
+
+//     println!("{}", h1);
+
+// }
+
+
+// fn main() {
+//     // Fill the blank to print each char in "#$, %^"
+//     for c in "#$, %^".chars() {
+//         println!("{}", c)
+//     }
+// }
+
+
+// fn main() {
+//     // Fill in the blank with proper array type
+//     let arr: [i32; 5] = [1, 2, 3, 4, 5];
+
+//     // Modify the code below to make it work
+//     assert!(arr.len() == 5);
+
+//     println!("Success!");
+// }
+
+
+
+// fn main() {
+//     //We can ignore parts of the array type or even the whole type, let the compiler infer it for us
+//     let arr0 = [1, 2, 3];
+//     let arr: [_; 3] = ['a', 'b', 'c'];
+
+//     //Fill in the blank 
+//     //Array are stack allocated, `std::mem::size_of_val' return the bytes which
+//     // A char take 4 bytes in rust: Unicode Char
+//     assert!(std::mem::size_of_val(&arr) == 12);
+
+//     println!("Success!");
+// }
+
+
+// fn main() {
+//     // Fill the blank 
+//     let list: [i32; 100] = [1; 100];  // This is contain [1 to 100]
+
+//     assert!(list[0] == 1);
+//     assert!(list.len() == 100);
+
+//     println!("Success!");
+//     println!("{:#?}", list)
+// }
+
+// All elements in an array mush be of the same type 
+
+
+// fn main() {
+//     // Fix the error 
+//     let _arr: [i32; 3] = [1, 2, 3];
+
+//     println!("Success!")
+// }
+
+
+// Indexing start at 0. 
+
+fn main() {
+    let arr: [char; 3] = ['a', 'b', 'c'];
+
+    let ele = arr[1]; // Only modify this line to make the code work!
+
+    assert!(ele == 'b');
+
     println!("Success!");
 }
 
+// Out of bound indexing cause panic
 
+// Fix the error 
+fn main() {
+    let names [String; 2] = [String::from("Sunfei"), "Sunface".to_string()];
 
+    // `Get` return an Option <T>, it's safe to use
+    let name0 = names.get(0).unwrap()
 
+    //But indexing is not safe
+    let _namel = &names[2];
 
-
+    println!("Success!");
+}
 
 
