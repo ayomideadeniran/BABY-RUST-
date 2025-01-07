@@ -1254,29 +1254,119 @@
 
 // Indexing start at 0. 
 
-fn main() {
-    let arr: [char; 3] = ['a', 'b', 'c'];
+// fn main() {
+//     let arr: [char; 3] = ['a', 'b', 'c'];
 
-    let ele = arr[1]; // Only modify this line to make the code work!
+//     let ele = arr[1]; // Only modify this line to make the code work!
 
-    assert!(ele == 'b');
+//     assert!(ele == 'b');
 
-    println!("Success!");
-}
+//     println!("Success!");
+// }
 
 // Out of bound indexing cause panic
 
 // Fix the error 
-fn main() {
-    let names [String; 2] = [String::from("Sunfei"), "Sunface".to_string()];
 
-    // `Get` return an Option <T>, it's safe to use
-    let name0 = names.get(0).unwrap()
 
-    //But indexing is not safe
-    let _namel = &names[2];
+// fn main() {
+//     let names [String; 2] = [String::from("Sunfei"), "Sunface".to_string()];
 
-    println!("Success!");
-}
+//     // `Get` return an Option <T>, it's safe to use
+//     let name0 = names.get(0).unwrap()
+
+//     //But indexing is not safe
+//     let _namel = &names[2];
+
+//     println!("Success!");
+// }
+
+
+
+
+// Fix the errors, DON'T add new lines!
+// fn main() {
+//     let arr: [i32; 3] = [1, 2, 3];
+//     let _s1: &[i32] = &arr[0..2];  // &[1, 2]
+
+//     let _s2 = "hello, world";
+
+//     println!("Success!");
+// }
+
+
+
+// A slice reference is a two-word object, for simplicity reasons, from now on we 
+// will use slice instead of slice reference. the first is a pointer to the data, and the second word is the lenght of the slice. The slice size is the same as usize, determined by the processor architecture, e.g 64 bits on am x86-64. 
+// Slices can be used to borrow a section of an array, and have the type signature &[T].
+
+
+// fn main() {
+//     let arr: [char; 3] = ['@', '%', '^'];
+
+//     let slice = &arr[..2];
+
+//     // Modify '8' to make it work
+//     // TIPS: slice ( reference ) Is Not an array, if it is an array, then `assert!` will be passed: Each of the two chars '^' and '$' occupies 4 bytes 2 * 4 = 8
+//     // additional tips in C a char is limited to ASCII (U+0000 to U+007f). but in Rust char can represent much more than ASCII including emojis (🦀), symbols (*) and other non latin characters (你好), which require more space. 
+//     assert!(std::mem::size_of_val(&slice) == 16);
+
+//     // println!("{:?}" arr)
+
+//     println!("Success!");
+// }
+
+
+// fn main() {
+//     let list: [i32; 9000] = [1; 9000];  // This is contain [1 to 100]
+//     // let s = "RustRustRustRustRustRustRust"; // UTF-8 encoded, takes 4 bytes (1 byte per ASCII character)
+//     // println!("Length of '{}': {}", s, s.len()); // Output: Length of 'Rust': 4
+//     println!("Length of '{:?}': {}", list, list.len()); // Output: Length of 'Rust': 4
+
+//     let emoji = "😀😀"; // UTF-8 encoded, takes 4 bytes
+//     println!("Length of '{}': {}", emoji, emoji.len()); // Output: Length of '😀': 4
+// }
+
+
+
+
+
+//     let _s1: &[i32] = &arr[0..2];  // &[1, 2]
+
+// fn main() {
+//     let arr: [i32; 5] = [1, 2, 3, 4, 5];
+//     // Fill the blanks to make the code work 
+//     let slice: &[i32] = &arr[1..4];
+//     assert_eq!(slice, &[2, 3, 4]);
+
+//     println!("Success!");
+// }
+
+
+// fn main() {
+//     let s = String::from("hello");
+
+//     let slice1 = &s[0..2];
+//     // Fill the blank to make the code work, DONT'T USE o..2 again
+//     let slice2 = s.clone();
+//     let slice2 = &s[..2];
+//     // both slice works
+
+//     assert_eq!(slice1, slice1);
+
+//     println!("Success!");
+// }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
