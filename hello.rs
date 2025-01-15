@@ -1106,15 +1106,9 @@
 //     println!("{}", s)
 // }
 
-
-
-
-
 // We can use String::from or to_String to convert a &str to string
 
 // We can use approches to fix the error and without adding a new line
-
-
 
 // fn main() {
 //     let s: String = "hello, world".to_string();
@@ -1123,9 +1117,6 @@
 
 //     println!("Success!");
 // }
-
-
-
 
 // String escapes
 
@@ -1149,8 +1140,6 @@
 //     println!("{}", long_string);
 // }
 
-
-
 // Sometimes there are just too many characters that need to be escaped or
 // much more convenient to write a string out as-is. This is where raw string literals come into play.
 
@@ -1160,7 +1149,7 @@
 
 // fn main() {
 //     let raw_str = r"Escapes don't work here: \x3f \u\{211D}";
-//     // modify above line to make it work 
+//     // modify above line to make it work
 //     assert_eq!(raw_str, "Escape don't work here: ? R");
 
 //     // If you need quote in a raw string, add a pair of #s
@@ -1170,17 +1159,12 @@
 //     // If you need quote "# in your string, just use more #s in the delimiter.
 //     // You can use up to 65535 #s.
 //     let delimiter = r###"A string with" # in it. And even "##!"###;
-//     println!("{}", delimiter); 
+//     println!("{}", delimiter);
 // }
-
-
 
 // String index
 
 // You can't use index to Access a char in a string, but you can use slice &s1[start..end].
-
-
-
 
 // fn main() {
 //     let s1:String = String::from("hi,#@");
@@ -1195,14 +1179,12 @@
 
 // }
 
-
 // fn main() {
 //     // Fill the blank to print each char in "#$, %^"
 //     for c in "#$, %^".chars() {
 //         println!("{}", c)
 //     }
 // }
-
 
 // fn main() {
 //     // Fill in the blank with proper array type
@@ -1214,14 +1196,12 @@
 //     println!("Success!");
 // }
 
-
-
 // fn main() {
 //     //We can ignore parts of the array type or even the whole type, let the compiler infer it for us
 //     let arr0 = [1, 2, 3];
 //     let arr: [_; 3] = ['a', 'b', 'c'];
 
-//     //Fill in the blank 
+//     //Fill in the blank
 //     //Array are stack allocated, `std::mem::size_of_val' return the bytes which
 //     // A char take 4 bytes in rust: Unicode Char
 //     assert!(std::mem::size_of_val(&arr) == 12);
@@ -1229,9 +1209,8 @@
 //     println!("Success!");
 // }
 
-
 // fn main() {
-//     // Fill the blank 
+//     // Fill the blank
 //     let list: [i32; 100] = [1; 100];  // This is contain [1 to 100]
 
 //     assert!(list[0] == 1);
@@ -1241,18 +1220,16 @@
 //     println!("{:#?}", list)
 // }
 
-// All elements in an array mush be of the same type 
-
+// All elements in an array mush be of the same type
 
 // fn main() {
-//     // Fix the error 
+//     // Fix the error
 //     let _arr: [i32; 3] = [1, 2, 3];
 
 //     println!("Success!")
 // }
 
-
-// Indexing start at 0. 
+// Indexing start at 0.
 
 // fn main() {
 //     let arr: [char; 3] = ['a', 'b', 'c'];
@@ -1266,8 +1243,7 @@
 
 // Out of bound indexing cause panic
 
-// Fix the error 
-
+// Fix the error
 
 // fn main() {
 //     let names [String; 2] = [String::from("Sunfei"), "Sunface".to_string()];
@@ -1281,9 +1257,6 @@
 //     println!("Success!");
 // }
 
-
-
-
 // Fix the errors, DON'T add new lines!
 // fn main() {
 //     let arr: [i32; 3] = [1, 2, 3];
@@ -1294,12 +1267,9 @@
 //     println!("Success!");
 // }
 
-
-
-// A slice reference is a two-word object, for simplicity reasons, from now on we 
-// will use slice instead of slice reference. the first is a pointer to the data, and the second word is the lenght of the slice. The slice size is the same as usize, determined by the processor architecture, e.g 64 bits on am x86-64. 
+// A slice reference is a two-word object, for simplicity reasons, from now on we
+// will use slice instead of slice reference. the first is a pointer to the data, and the second word is the lenght of the slice. The slice size is the same as usize, determined by the processor architecture, e.g 64 bits on am x86-64.
 // Slices can be used to borrow a section of an array, and have the type signature &[T].
-
 
 // fn main() {
 //     let arr: [char; 3] = ['@', '%', '^'];
@@ -1308,14 +1278,13 @@
 
 //     // Modify '8' to make it work
 //     // TIPS: slice ( reference ) Is Not an array, if it is an array, then `assert!` will be passed: Each of the two chars '^' and '$' occupies 4 bytes 2 * 4 = 8
-//     // additional tips in C a char is limited to ASCII (U+0000 to U+007f). but in Rust char can represent much more than ASCII including emojis (🦀), symbols (*) and other non latin characters (你好), which require more space. 
+//     // additional tips in C a char is limited to ASCII (U+0000 to U+007f). but in Rust char can represent much more than ASCII including emojis (🦀), symbols (*) and other non latin characters (你好), which require more space.
 //     assert!(std::mem::size_of_val(&slice) == 16);
 
 //     // println!("{:?}" arr)
 
 //     println!("Success!");
 // }
-
 
 // fn main() {
 //     let list: [i32; 9000] = [1; 9000];  // This is contain [1 to 100]
@@ -1327,21 +1296,16 @@
 //     println!("Length of '{}': {}", emoji, emoji.len()); // Output: Length of '😀': 4
 // }
 
-
-
-
-
 //     let _s1: &[i32] = &arr[0..2];  // &[1, 2]
 
 // fn main() {
 //     let arr: [i32; 5] = [1, 2, 3, 4, 5];
-//     // Fill the blanks to make the code work 
+//     // Fill the blanks to make the code work
 //     let slice: &[i32] = &arr[1..4];
 //     assert_eq!(slice, &[2, 3, 4]);
 
 //     println!("Success!");
 // }
-
 
 // fn main() {
 //     let s = String::from("hello");
@@ -1357,16 +1321,743 @@
 //     println!("Success!");
 // }
 
+// fn main() {
+//     let s: &str = "@#, &%";
+//     // Modify this line to make the code work
+//     let slice = &s[0..1];
 
+//     assert!(slice == "@");
 
+//     println!("Success!");
+// }
 
+// &String can be implicitly converted into &str.
 
+// Fix errors
 
+// fn main() {
+//     let mut s: String = String::from("hello world");
 
+//     //Here, &s is &String type, but `first_word need a `&str` type
+//     // It works because `can be implicitly converted to `&str. If you want
+//     let word: &str = first_word(&s);
+//     println!("the first word is: {}", word);
 
+//     s.clear();  // error!
+// }
 
+// fn first_word(s: &str) -> &str {
+//     &s[..1]
+// }
 
+// Element in a tuple can have different types. Tuple's type signature is (T1, T2 ...)
+// where T1, T2 are the types of tuple's members.
 
+// fn main() {
+//     let _t0: (u8, i16) = (0, -1);
+//     // Tuples can be tuple's members
+//     let _t1: (u8, (i16, u32)) = (0, (-1, 1));
+//     // Fill the blanks to make the code work
+//     let t: (u8, __, i64, __, __) = (1u8, 2u16, 3i64, "hello", String::from(", world"));
 
+//     println!("Success!");
+// }
 
+// Memebers can be extracted from the tuple using indexing
 
+// fn main() {
+//     let t: (&str, &str, &str) = ("i", "am", "sunface");
+//     assert_eq!(t.2, "sunface");
+
+//     println!("Success!");
+// }
+
+// long tuple cannot be printed
+
+// Fix the error
+// fn main() {
+//     // We can only have 12 element in a tuple
+//     let too_long_tuple: i64 = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12);
+//     println!("too long tuple: {:?}", too_long_tuple);
+// }
+
+// destructuring tuple with pattern
+// fn main() {
+//     let tup: (i32, f64, &str) = (1, 6.4, "hello");
+
+//     // Fill the blank to make  the code work
+//     let (x, z, y) = tup;
+
+//     assert_eq!(x, 1);
+//     assert_eq!(y, "hello");
+//     assert_eq!(z, 6.4);
+
+//     println!("Success!");
+// }
+
+// Destrusturing assignments
+
+// fn main() {
+//     let (x, y, z);
+
+//     let ok = 4;
+
+//     println!("{}", ok);
+
+//     //Fill the blank
+//     (y, z, x)  = (1, 2, 3);
+
+//     assert_eq!(x, 3);
+//     assert_eq!(y, 1);
+//     assert_eq!(z, 2);
+
+//     println!("Success!");
+// }
+
+// Tuples can be used as function arguments and return values
+
+// fn main() {
+//     // Fill the blank, need a few computation here.
+//     let (x, y) = sum_multiply((2, 3));
+
+//     assert_eq!(x, 5);
+//     assert_eq!(y, 6);
+
+//     println!("Success!");
+// }
+
+// fn sum_multiply(nums: (i32, i32)) -> (i32, i32) {
+//     (nums.0 + nums.1, nums.0 * nums.1)
+// }
+
+// We must specify concrete values for each of the fields in struct
+
+// fix the error
+// struct Person {
+//     name: String,
+//     age: u8,
+//     hobby: String
+// }
+
+// fn main() {
+//     let age = 30;
+//     let p: Person =  Person {
+//         name: String::from("sunface"),
+//         age,
+//         hobby: String::from("coding"),
+//     };
+
+//     println!("Successs");
+// }
+
+// Unit struct dont have any fields. It can be useful when you need to implement a triat
+// on some type but don't have any data that you want to share in the type itself.
+
+// struct Unit;
+// triat SomeTrait {
+//     // ...... some behaviour defined here.
+// }
+
+// // We dont't care about what field are in the unit, but we care about its behaviour
+// // so we use a struct with no field and implement some behaviour for it
+// impl SomeTrait for Unit { }
+
+// fn main() {
+//     let u = Unit;
+//     do_something_with_unit(u);
+
+//     println!("Success!");
+// }
+
+// // Fill the blank to make the code work
+// fn do_something_with_unit(u: __) {}
+
+// Tuple struct looks similar to tuples , it has added meaning the struct name provides but has no named fields.
+// It's useful when you want to give the whole tuple a name, but don't care about the fields's names.
+
+// Fix the error and fill the blanks
+
+// struct Color(i32, i32, i32);
+// struct Point(i32, i32, i32);
+
+// fn main() {
+//     let v: Point = Point(0, 127, 255);
+//     check_color(v);
+
+//     println!("Success!");
+// }
+
+// // fn check_color(p: Point) {
+// //     // Access the fields of the Point struct directly
+// //     let x = p.0;
+// //     let z = p.2;
+
+// //     assert_eq!(x, 0);
+// //     assert_eq!(p.1, 127);
+// //     assert_eq!(z, 255);
+// // }
+
+// fn check_color(p: Point) {
+//     let Point (x, _, z) = p;
+//     assert_eq!(x, 0);
+//     assert_eq!(p.1, 127);
+//     assert_eq!(z, 255);
+// }
+
+// You can make a whole struct mutable when instantiating it, but rust doesn't allow to mark only certain fields as mutable
+
+// Fill the blank and fix the error without adding/removing new line
+
+// I have to add Debug so as to Print the inportant informations of p
+// #[derive(Debug)]
+// struct Person {
+//     name: String,
+//     age: u8,
+// }
+
+// fn main() {
+//     let age: u8 = 18;
+//     let mut p: Person = Person {
+//         name: String::from("sunface"),
+//         age,
+//     };
+
+//     // How can you believe sunface is the only 18
+//     p.age = 30;
+
+//     // Fill the blank
+//     p.name = String::from("Sunfei");
+
+//     // println!("Successs!");
+//     println!("{:?}", p);
+// }
+
+// Using field init shorthand syntax to reduce repetitions.
+
+// // Fill the blank
+// struct Person {
+//     name: String,
+//     age: u8,
+//     point: f32,
+// }
+
+// fn main() {
+//     println!("Success!");
+// }
+
+// fn build_person(name: String, age: u8, point: f32) -> Person {
+//     Person {
+//         age,
+//         name,
+//         point,
+//     }
+// }
+
+// Fill the blank to make the code work
+// struct User {
+//     active: bool,
+//     username: String,
+//     email: String,
+//     sign_in_count: u64,
+// }
+
+// fn main() {
+//     let u1: User = User {
+//         email: String::from("someone@example.com"),
+//         username: String::from("sunface"),
+//         active: true,
+//         sign_in_count: 1,
+//     };
+
+//     let u2: User = set_email(u1);
+
+//     println!("Success!");
+// }
+
+// fn set_email(u: User) -> User {
+//     User {
+//         email: String::from("contact@im.dev"),
+//         ..u
+//     }
+// }
+
+// fill the blank to make it work the code work
+// #[derive(Debug)]
+// struct Rectangle {
+//     width: u32,
+//     height: u32,
+// }
+
+// fn main() {
+//     let scale = 2;
+//     let rect1: Rectangle = Rectangle {
+//         width: dbg!(30 * scale), // Print debug info to stdrr and assign the value of `30 * scale` to `width`
+//         height: 50,
+//     };
+
+//     dbg!(&rect1); // Print debug info to stderr
+
+//     println!("{:?}", rect1); // print debu info stdout
+// }
+
+// fn main() {
+//     #[derive(Debug)]
+//     struct Person {
+//         name: String,
+//         age: Box<u8>,
+//     }
+
+//     let person = Person {
+//         name: String::from("Alice"),
+//         age: Box::new(20),
+//     };
+
+//     // `name` is moved out of person, but `age` is referennced
+//     // let Person { name, ref age } = person;
+
+//     println!("The person's age is {}", age);
+
+//     println!("The person's name is {}", name);
+
+//     // Error! borrow of partailly moved value `person` partial move occurs
+//     // println! ("The person struct is {:?}, person");
+
+//     // `person`  cannot be used but `person.age` can be used as it is not moved
+//     println!("The person's age from person struct is {}", person.age);
+//     // println!("The person's age from person struct is {}", person.name);
+// }
+
+// Fix errors to make it work
+// #[derive(Debug)]
+
+// struct File {
+//     name: String,
+//     data: String,
+// }
+
+// fn main() {
+//     let f: File = File {
+//         name: String::from("readme.md"),
+//         data: "Rust By Practices".to_string(),
+//     };
+
+//     let _name : String = f.name.clone();
+
+//     // ONLY modify this line
+//     // println!("{:?}", f);
+//     println!("{}, {}, {:?}", _name, f.data, f);
+// }
+
+// ENUM
+
+// Way of defining a type with only one of a possible set of values
+// We can only Access one varient of an enum at a time
+// can hold additional information using tuples
+// Especially useful when using in match statements
+// in Structs we have fields while in Enum we have variant
+
+// Enum can be created with explicit discriminator.
+
+// Fix the errors
+
+// enum Number {
+//     Zero,
+//     One,
+//     Two,
+// }
+
+// enum Number1 {
+//     Zero = 0,
+//     One,
+//     Two = 5,
+// }
+
+// // C_like enum
+// enum Number2 {
+//     Zero = 0,
+//     One = 1,
+//     Two = 2,
+// }
+
+// fn main() {
+//     // An enum variant can be converted to a integer by `as`
+//     assert_eq!(Number::One as u8, Number1::One as u8);
+//     assert_eq!(Number1::One as u8, Number2::One as u8);
+
+//     println!("{}", Number1::Two as u8);
+
+//     println!("Success!");
+// }
+
+// Each enum variant can hold its own data
+
+// Fill in the blank
+// #[derive(Debug)]
+// enum Message {
+//     Quit,
+//     Move { x: i32, y: i32 },
+//     Write(String),
+//     changecolor(i32, i32, i32),
+// }
+
+// fn main() {
+//     let msg1: Message = Message::Move{ x: 1, y:2 }; // Instructiating with X = 1, y = 2
+//     let msg2: Message = Message::Write(String::from("hello, world!")); // instantiating with
+
+//     println!("Success!");
+//     println!("{:?}", msg1);
+//     println!("{:?}", msg2);
+//     // all the ouput well printed
+// }
+
+// Fill in the blank and fix the error
+
+// enum Message {
+//     Quit,
+//     Move {x: i32, y: i32 },
+//     Write(String),
+//     changecolor(i32, i32, i32),
+// }
+
+// fn main() {
+//     let msg = Message::Move{x: 1, y: 1};
+
+//     // i have not being taught about if and else but the code compile
+//     if let Message::Move{x: a, y: b} = msg {
+//         assert_eq!(a, b);
+//     } else {
+//         panic!("NEVER LET THIS RUN!");
+//     }
+
+//     println!("Success!");
+// }
+
+// Fill in the blank and fix the errors
+
+// #[derive(Debug)]
+// enum Message {
+//     Quit,
+//     Move {x: i32, y: i32 },
+//     Write(String),
+//     Changecolor(i32, i32, i32),
+// }
+
+// fn main() {
+//     let msgs: [Message; 3] = [
+//         Message::Quit,
+//         Message::Move{x:1, y:3},
+//         Message::Changecolor(255, 255, 0),
+//     ];
+
+//     for msg in msgs {
+//         show_message(msg)
+//     }
+// }
+
+// fn show_message(msg: Message) {
+//     println!("{:?}", msg);
+// }
+
+// Fill in the blank to  make the `println` work
+// Also add some code to prevent the `panic` from running
+
+// fn main() {
+//     let five: Option<i32> = Option::Some(5);
+//     let six: Option<i32> = plus_one(five);
+//     let none = plus_one(None);
+
+//     if let Some(n) = six {
+//         println!("{}", n);
+
+//         println!("success!");
+//     }
+//     else {
+//         panic!("Never Let this run!");
+//     }
+//     // panic!("NEVER LET THIS RUN!");
+// }
+
+// fn plus_one(x: Option<i32>) -> Option<i32> {
+//     match x {
+//         None => None,
+//         Some(i) => Some(i + 1),
+//     }
+// }
+
+// Implement a linked-list via enums,
+
+// use create::list::*;
+
+// enum List {
+//     // Cons: Tuple struct that wraps an element and a pointer to the next node
+//     cons(u32, Box<List>),
+//     // Nil: A node that signifies the end of the linked list
+//     Nil,
+// }
+
+// // Methods can be attached to an enum
+
+// impl List {
+//     // Create an empty list
+//     fn new() -> List {
+//         // `Nil` has type `List`
+//         Nil
+//     }
+// }
+// I will come  back to this level once i learn Enough
+
+// Flow Control
+
+// Normal flow
+
+// If/else
+// Fill in the blanks
+
+// fn main() {
+//     let n: i32 = 0;
+
+//     if n < 0 {
+//         println!("{} is negative", n);
+//     } else if n > 0 {
+//         println!("{} is positive", n);
+//     } else {
+//         println!("{} is Zero", n);
+//     }
+// }
+
+// if/else expression can be used in assignments.
+
+// // fix the errors
+
+// fn main() {
+//     let n: i32 = 5;
+
+//     let big_n: i32  =
+//     if n < 10 && n > -10 {
+//         println!(", and is a small number, increase tem-fold");
+
+//         10 * n
+//     }
+//     else {
+//         println!(", and is a big number, halve the number");
+
+//         n / 2.0 as i32
+//     };
+
+//     println!("{} -> {}", n, big_n);
+// }
+
+// The for in construct can be used to iterator, e.g a range
+
+// fn main() {
+//     for n in 1..100 { // modify this line to make the code work
+//         if n == 100 {
+//             panic!("NEVER LET THIS RUN")
+//         }
+//         println!("{}", n);
+//     }
+
+//     println!("Success!");
+// }
+
+// Fix the errors without adding or removing lines
+
+// fn main(){
+//     let names = [String::from ("liming"), String::from("hanmeimei")];
+//     for name in &names {
+//         // Do something with name
+//         println!("{:?}", name);
+//     }
+
+//     println!("{:?}", names);
+
+//     let numbers = [1, 2, 3];
+//     // The elements in number are copy, so there is no move here
+//     for n in numbers {
+//         // Do something with name
+//         println!("{}", n)
+//     }
+
+//     println!("{:?}", numbers)
+// }
+
+// fn main() {
+//     let a: [ i32; 4 ] = [ 4, 3, 2, 1 ];
+
+//     // Iterate the indexing and value in 'a'
+//     for (i, v) in a.iter().enumerate() {
+//         println!("The {}th element is {}", i + 1, v);
+//     }
+// }
+
+// fn main() {
+//     let numbers = [10, 20, 30];
+//     for (index, value) in numbers.iter().enumerate() {
+//         println!("Index: {}, Value: {}", index, value);
+//     }
+// }
+
+// Fill in the blanks to make the last println! work !
+
+// fn main() {
+//     // A counter variable
+//     let mut n: i32 = 1;
+
+//     // Loop while the condition is true
+//     while n < 10 {
+//         if n % 15 == 0 {
+//             println!("fizzbuzz");
+//         } else if n % 3 == 0 {
+//             println!("Fizz");
+//         } else if n % 5 == 0 {
+//             println!("buzz");
+//         } else {
+//             println!("{}", n);
+//         }
+
+//         // n += 1;
+//     }
+//     println!("n reached{}, so loop is over", n);
+// }
+
+// so one can get in and get out of loop and even if things dont work out as planned you can increase the flows
+
+// Continue and Break
+
+// Use Break to break the loop
+
+// Fill in the blank
+// fn main() {
+//     let mut n: i32 = 0;
+//     for i in 0..=100 {
+//         if n == 66 {
+//             break;
+//         }
+//         n += 1;
+//     }
+//     assert_eq!(n, 66);
+
+//     println!("Success!");
+// }
+
+// continue will skip over the remaining code in current iteration and go the next iteration.
+
+// Fill in the blank
+// fn main() {
+//     let mut n: i32 = 0;
+//     for i in 0..=100 {
+//         if n < 66 {
+//             n += 1;
+//             println!("66 Still counting");
+//             continue;
+//         }
+
+//         if n < 77 {
+//             n += 1;
+//             println!("77 Still counting");
+//             continue;
+//         }
+
+//         if n < 88 {
+//             n += 1;
+//             println!("88 Still counting");
+//             continue;
+//         }
+//         // break;
+//     }
+//     assert_eq!(n, 88);
+
+//     println!("Success!");
+// }
+
+// Loop is usually used together with break or continue.
+
+// Fill in the blanks
+
+// fn main() {
+//     let mut count: u32 = 0u32;
+
+//     println!("Let's count untill infinity");
+
+//     // Infinity loop
+//     loop {
+//         count += 1;
+
+//         if count == 3 {
+//             println!("three");
+
+//             // Skip the rest of this iteration
+//             continue;
+//         }
+
+//         println!("{}", count);
+
+//         if count == 5 {
+//             println!("ok, that's enough");
+
+//             break;
+//         }
+//     }
+
+//     assert_eq!(count, 5);
+
+//     println!("Success!");
+// }
+
+// This is a Job well done
+
+// Loop is an expression, so we can use it with break to return a value
+
+// Fill in the blank
+
+// fn main() {
+//     let mut counter = 0;
+
+//     let result = loop {
+//         counter += 1;
+
+//         if counter == 10 {
+//             break counter * 2;
+//         }
+//     };
+
+//     assert_eq!(result, 20);
+
+//     println!("Success!");
+// }
+
+// its possible to break or continue outer loops when dealing with nested loops. In these cases,
+// the loops must be annotated with some 'label, and the label must be passed
+// to the break/continue statement.
+
+// Fill in the blank
+fn main() {
+
+    let mut count = 0;
+    'outer: loop {
+        'inner1: loop {
+            if count >= 20 {
+                // This would break only the inner1 loop
+                break 'inner1; // 'break' is also works.
+            }
+            count += 2;
+        }
+
+        count += 5;
+
+        'inner2: loop {
+            if count >= 30 {
+                // This breaks the outer loop
+                break 'outer;
+            }
+
+            // This will continue the outer loop
+            continue 'outer;
+        }
+
+    }  // We have lot of Rule and activities to perform here
+
+    assert!(count == 30);
+
+    println!("Success!");
+}
