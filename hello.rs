@@ -2031,33 +2031,622 @@
 // to the break/continue statement.
 
 // Fill in the blank
-fn main() {
+// fn main() {
 
-    let mut count = 0;
-    'outer: loop {
-        'inner1: loop {
-            if count >= 20 {
-                // This would break only the inner1 loop
-                break 'inner1; // 'break' is also works.
-            }
-            count += 2;
-        }
+//     let mut count = 0;
+//     'outer: loop {
+//         'inner1: loop {
+//             if count >= 20 {
+//                 // This would break only the inner1 loop
+//                 break 'inner1; // 'break' is also works.
+//             }
+//             count += 2;
+//         }
 
-        count += 5;
+//         count += 5;
 
-        'inner2: loop {
-            if count >= 30 {
-                // This breaks the outer loop
-                break 'outer;
-            }
+//         'inner2: loop {
+//             if count >= 30 {
+//                 // This breaks the outer loop
+//                 break 'outer;
+//             }
 
-            // This will continue the outer loop
-            continue 'outer;
-        }
+//             // This will continue the outer loop
+//             continue 'outer;
+//         }
 
-    }  // We have lot of Rule and activities to perform here
+//     }  // We have lot of Rule and activities to perform here
 
-    assert!(count == 30);
+//     assert!(count == 30);
 
-    println!("Success!");
+//     println!("Success!");
+// }
+
+// Match
+
+// Fill the blanks
+// enum Direction {
+//     East,
+//     West,
+//     North,
+//     South,
+// }
+
+// fn main() {
+
+//     let dire = Direction::South;
+//     match dire {
+//         Direction::East => println!("East"),
+//         Direction::South | Direction::North => { // Matching South or North here
+//             println!("south or North");
+//         },
+//         _ => println!("west"),
+//     };
+// }
+
+// Match is an expression, so we can use it in assignments
+
+// fn main() {
+//     let boolean: bool = true;
+
+//     // Fill the blank with a match expression;
+
+//     // boolean = true => binary = 1
+//     // boolean = false => binary = 0
+//     let binary = match boolean {
+//         true => 1,
+//         false => 0,
+//     };
+
+//     assert_eq!(binary, 1);
+
+//     println!("Success!");
+// }
+
+// Using match to get the data an enum variant holds
+
+// Fill in the blanks
+
+// enum Message {
+//     Quit,
+//     Move { x: i32, y: i32 },
+//     Write(String),
+//     Changecolor(i32, i32, i32),
+// }
+
+// fn main() {
+//     let msgs: [Message; 3] = [
+//         Message::Quit,
+//         Message::Move{x:1, y:3},
+//         Message::Changecolor(255, 255, 0)
+//     ];
+
+//     for msg in msgs {
+//         show_message(msg)
+//     }
+
+//     println!("success!");
+// }
+
+// fn show_message(msg: Message) {
+//     match msg {
+//         Message::Move {x: a, y: b} => { // match Message: Move
+//             assert_eq!(a, 1);
+//             assert_eq!(b, 3);
+//             println!("It is Working")
+//         },
+//         Message::Changecolor(r, g, b) => {
+//             assert_eq!(r, 255);
+//             assert_eq!(g, 255);
+//             assert_eq!(b, 0);
+//             println!("It is Working")
+//         },
+//         Message::Quit => {
+//             println!("Code Terminated");
+//         }
+//         __ => println!("no data in these variants")
+//     }
+// }
+
+// I Even Create more logics
+// Now all the code is working well as Expected
+
+// Matches!
+
+// Matches looks like match, but can do something different.
+
+// fn main() {
+//     let alphabets = ['a', 'E', 'Z', '0', 'x', '9', 'Y'];
+
+//     // Fill the blank with `matches!` to make the code work
+//     for ab in alphabets {
+//         assert!(matches!(ab, 'a'..='z' | 'A'..='Z' | '0'..='9'));    }
+
+//     println!("Success!");
+// }
+
+// #[derive(Debug)]
+// enum MyEnum {
+//     Foo,
+//     Bar
+// }
+
+// fn main() {
+//     let mut count = 0;
+
+//     let v = vec![MyEnum::Foo,MyEnum::Bar, MyEnum::Foo];
+//     for e in v {
+//         if matches!(e, MyEnum::Foo) {
+//             count += 1;
+//             println!("{:?}", e);
+//         }
+
+//         // if e == MyEnum::Foo { // Fix the error by changing only this line
+//         //     count += 1;
+//         // }
+//     }
+//     assert_eq!(count, 2);
+
+//     println!("Success!");
+// }
+
+// If let
+
+// For some cases, when matching enums, match is too heavy. We can use if let instead.
+
+// fn main() {
+//     let o: Option<i32> = Some(7);
+
+//     // Remove the whole `match` block, using `if let` instead
+
+//     if let Some(i) = o {
+//          println!("This is a really long String and `{:?}`", i);
+
+//          println!("Success!");
+//     }
+
+//     // if o == Some(7) {
+//     //     println!("This is a really long string and `{:?}`", o);
+//     //     println!("Success");
+//     // }
+
+//     // else {
+//     //     println!("It's not Working");
+//     // }
+
+//     // match o {
+//     //     Some(i) = {
+//     //         println!("This is a really long string and `{:?}`", i);
+
+//     //         println!("Success!");
+//     //     }
+//     //     _ => {}
+//     // };
+// }
+
+// Fill in the blank
+
+// enum Foo {
+//     Bar(u8),
+// }
+
+// fn main() {
+//     let a = Foo::Bar(1);
+
+//     // Solving it using Match
+//     match a {
+//         Foo::Bar(i) => {
+//             println!("foobar holds the value: {:?}", i);
+
+//             println!("Success!");
+//         }
+//     }
+
+//     // Solving it using if let
+//     if let Foo::Bar(i) = a {
+//         println!("foobar holds the value: {:?}", i);
+
+//         println!("Success!");
+//     }
+// }
+
+// enum Foo {
+//     Bar,
+//     Baz,
+//     Quz(u32),
+// }
+
+// fn main() {
+//     // Remove the codes below, using `match instead`
+
+//     let a: Foo = Foo::Quz(10);
+
+//     match a {
+//         Foo::Bar => println!("match foo::Bar"),
+//         Foo::Baz => println!("match foo::Baz"),
+//         _ => println!("match others"),
+//     }
+
+//     // if let Foo::Bar = a {
+//     //     println!("match foo::bar")
+//     // }  else if let Foo::Baz = a {
+//     //     println!("match foo::baz")
+//     // } else {
+//     //     println!("match others")
+//     // }
+// }
+
+//     match a {
+//         Foo::Bar(i) => {
+//             println!("foobar holds the value: {:?}", i);
+
+//             println!("Success!");
+//         }
+//     }
+
+// Shadowing
+
+// Fix the errors in-place
+
+// fn main() {
+//     let age = Some(30);
+//     if let Some(age) = age { // Create a new variable with the same name as previous
+//         assert_eq!(age, 30);
+//     } // The new variable `age` goes out of scope here
+
+//     match age {
+//         // Match can also introdce a new shadowed variable
+//         Some(age) => println!("age is a new variable, it's value is {}", age),
+//         _ => ()
+//     }
+// }
+
+// PATTERNS
+
+// Use | to match several values, use  ..= to match an inclusive range
+
+// fn main() {
+//     let n = match_number(1);
+// }
+// fn match_number(n: i32) {
+//     match n {
+//         // Match a single value
+//         1 => println!("one!"),
+//         // Fillin the blank with `|` DON'T use  `..` or `..=`
+//         2 | 3 | 4 | 5 => println!("match 2 => 5"),
+//         // Match an inclusive range
+//         6..=10 => {
+//             println!("match 6 -> 10")
+//         }
+//         _ => {
+//             println!("match -infinite -> 0 or  11 -> +infinite")
+//         }
+//     }
+// }
+
+// The @ operator lets us create a variable that holds a value, at the same time
+// are testing that to see whether it matches a pattern.
+
+// The @ operator lets us create a variable that holds a value, at the same time
+// we are testing that value to see whether it matches a pattern.
+
+// struct Point {
+//     x: i32,
+//     y: i32,
+// }
+
+// fn main() {
+//     // Fill in the blank to create a Point
+//     let p = Point { x: 4, y: 20 };
+
+//     match p {
+//         // Match a Point on the x-axis (y = 0)
+//         Point { x, y: 0 } => println!("On the x-axis at {}", x),
+
+//         // Match a Point where x is between 0 and 5 (inclusive) and y is one of 10, 20, or 30
+//         Point {
+//             x: 0..=5,
+//             y: y @ (10 | 20 | 30),
+//         } => println!("On the y-axis at {}", y),
+
+//         // Catch-all pattern for points not on the axes
+//         Point { x, y } => println!("On neither axis: ({}, {})", x, y),
+//     }
+// }
+
+
+
+
+
+
+
+// I am here to know the different between Struct and match 
+
+
+
+// Working with Struct
+
+
+
+// struct Point {
+//     x: i32,
+//     y: i32,
+// }
+
+
+
+// fn main() {
+//     let point = Point { x: 5, y: 10 };
+
+//     match point {
+//         // Match specific values for `x` and `y`
+//         Point { x: 0, y } => println!("Point is on the y-axis at y = {}", y),
+
+//         // Use ranges or wildcards (`_`) to match partially
+//         Point { x: 1..=15, y } => println!("Point is within x range 1 to 5, y = {}", y),
+
+//         // Use a catch-all for unmatched cases
+//         Point { x, y } => println!("Point is at ({}, {})", x, y),
+//     }
+// }
+
+
+
+
+// Matching  With enum
+
+// enum Shape {
+//     Circle { radius: f64 },
+//     Rectangle { width: f64, height: f64 },
+//     Triangle,
+// }
+
+// fn main() {
+//     let shape = Shape::Circle { radius: 30.0 };
+//     let shape = Shape::Rectangle { width: 10.0, height: 20.0 };
+//     // let shape = Shape::Triangle;
+
+//     match shape {
+//         // Match the Circle variant
+//         Shape::Circle { radius } => println!("Circle with radius {}", radius),
+
+//         // Match the Rectangle variant with named fields
+//         Shape::Rectangle { width, height } => {
+//             println!("Rectangle with width {} and height {}", width, height)
+//         }
+
+//         // Match the Triangle variant
+//         Shape::Triangle => println!("It's a triangle!"),
+//     }
+// }
+
+
+
+
+
+
+
+// Fix the errors
+
+// enum Message {
+//     Hello { id: i32 },
+// }
+
+// fn main() {
+//     let msg: Message = Message::Hello { id: 5 };
+
+//     match msg {
+//         Message::Hello {
+//             id: id @ 3..=7, 
+//         } => println!("Found an id in range [3, 7]: {}", id),
+//         Message::Hello { id: newid @ ( 10 | 11 | 12 ) } => {
+//             println!("Found an id in another range [10, 12]: {}", newid)
+//         }
+//         Message::Hello { id } => println!("Found some other id: {}", id),
+//     }
+// }
+
+
+
+// A match guard ia na additional if condition specified after the pattern in a match arm that must also match, along with the pattern matching, for that arm to be chosen.
+
+// Fill in the blank to make the code work, `split` MUST be used
+
+
+// fn main() {
+//     let num = Some(4);
+//     let split: i32 = 5;
+//     match num {
+//         Some(x) if x < split => assert!(x < split),
+//         Some(x) => assert!(x >= split),
+//         None => (), 
+//     }
+
+//     println!("Success!");
+// }
+
+
+// ignoring remaining parts of the value using ..
+ 
+// FIll the blank to mak ethe code work 
+
+//   Fix the error with least changing 
+// Dont remove any code line
+
+// fn main() {
+//     let mut v = String::from("hello,");
+//     let r = &mut v;
+
+//     match r {
+//         value => value.push_str(" world!"),
+//     }
+
+//     println!("{}", v); // Output: hello, world!
+// }
+
+                        // Example Method
+// #[derive(Debug)]
+
+// struct Rectangle {
+//     width: u32,
+//     height: u32,
+// }
+
+// impl Rectangle {
+//     fn area(&self) -> u32 {
+//         self.width * self.height
+//     }
+// }
+
+
+
+
+                // Associated Functions and Methods
+                
+                
+                // Methods :: Methods are similar to functions: Declare with fn, have parameters and a return value.
+                //  Unlike functions, methods are defined wihin the context of a struct(or an enum or a trait object),
+                //  and their first parameter is always self , which represent the instance of the struct the method is being called on.
+                
+                
+                // Associated Functions and Methods
+// struct Rectangle {
+//     width: u32,
+//     height: u32,
+// }
+
+// impl Rectangle {
+//     // Complete the area method which return the area of a Rectangle. 
+//     fn area(self) -> u32 {
+//         self.width * self.height
+//     }
+// }
+
+// fn main() {
+//     let rect1: Rectangle = Rectangle { width: 30, height: 50 };
+//     assert_eq!(rect1.area(), 1500);
+
+//     println!("Success!");
+// }
+
+
+
+// Self Will take the ownership of current struct instance, however, &self will only borrow a reference from the instance.
+
+// Only fill in the blannks, Don't remove any line!
+// #[derive(Debug)]
+// struct TrafficLight {
+//     Color: String,
+// }
+
+// impl TrafficLight {
+//     // Using `self` to fill in the blank.
+//     pub fn show_state(self: &Self) {
+//         println!("the current state is {}", self.Color);
+//     }
+    
+
+//     // Fill in the blank, Dont use any variant of `Self`.  
+//     pub fn change_state(&mut self) {
+//         self.Color = "green".to_string()
+//     }
+// }
+
+// fn main() {
+//     println!("Success!")
+// }
+
+
+
+// struct TrafficLight {
+//     color: String,
+// }
+
+// impl TrafficLight {
+//     // 1. Implement an assotiated function `new`,
+//     // 2.It will retrun a TrafficLight contains color "red"
+//     // 3.Must use `self`, Dont use TrafficLight in fn signatrues or body
+
+//     pub fn new() -> Self {
+//         Self {
+//             color: String::from("red"),
+//         }
+//     }
+
+//     pub fn get_state(&self) -> &str {
+//         &self.color
+//     }
+// }
+
+// fn main() {
+//     let light = TrafficLight::new();
+//     assert_eq!(light.get_state(), "red");
+
+//     println!("Success!");
+// }
+
+
+
+// multiple impl Block 
+
+// Each struct is allowed to have multiple impl blocks.
+
+// struct Rectangle {
+//     width: u32,
+//     height: u32,
+// }
+
+// // Using Multiple `impl` blocks to rewrite the code below 
+// impl Rectangle {
+//     fn area(&self) -> u32 {
+//         self.width * self.height
+//     }
+// }
+
+// impl Rectangle {
+//     fn can_hold(&self, other: &Rectangle) -> bool {
+//         self.width > other.width && self.height > other.height
+//     }
+// }
+
+// fn main() {
+//     println!("Success!");
+// }
+
+
+
+
+// Enums
+
+// We can also implement methods for enums.
+
+#[derive(Debug)]
+
+enum TrafficLightColor {
+    Red,
+    Yellow,
+    Green,
 }
+
+// Implement TrafficLightColor with a method.
+
+impl TrafficLightColor {
+    fn color(&self) -> &str {
+        match self {
+            Self::Yellow => "yellow",
+            Self::Red => "red",
+            Self::Green => "green",
+        }
+    }
+}
+
+
+fn main() {
+    let c: TrafficLightColor = TrafficLightColor::Yellow;
+
+    assert_eq!(c.color(), "yellow"); 
+
+    println!("{:?}", c);
+}
+
+
