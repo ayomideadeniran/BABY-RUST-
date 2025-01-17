@@ -2620,33 +2620,114 @@
 
 // We can also implement methods for enums.
 
-#[derive(Debug)]
+// #[derive(Debug)]
 
-enum TrafficLightColor {
-    Red,
-    Yellow,
-    Green,
+// enum TrafficLightColor {
+//     Red,
+//     Yellow,
+//     Green,
+// }
+
+// // Implement TrafficLightColor with a method.
+
+// impl TrafficLightColor {
+//     fn color(&self) -> &str {
+//         match self {
+//             Self::Yellow => "yellow",
+//             Self::Red => "red",
+//             Self::Green => "green",
+//         }
+//     }
+// }
+
+
+// fn main() {
+//     let c: TrafficLightColor = TrafficLightColor::Yellow;
+
+//     assert_eq!(c.color(), "yellow"); 
+
+//     println!("{:?}", c);
+// }
+
+
+
+
+                                // Generics
+
+
+
+
+
+                                // testing  What is Monomorphization?
+
+ // When you use generics, the compiler generates specialized versions of the generic code for each concrete type used. This process is called monomorphization, and it ensures that there is no runtime overhead for using generics.
+
+// fn print<T: std::fmt::Debug>(x: T) { 
+//        println!("{:?}", x);
+// }
+
+// fn main() {
+//     print(5);         // Generates print(i32)
+//     print("hello");   // Generates print(&str)
+// }
+
+
+
+                            // main Generics Code 
+
+
+// A function call with  explicitly specified type parameters looks like: fun::<A, B, ...>().
+
+// // Implement the generic function below.
+// fn sum <T: std::ops::Add<Output = T>>(a: T, b: T) -> T {
+//     a + b
+// }
+
+// fn main() {
+//     assert_eq!(5, sum(2i8, 3i8));
+//     assert_eq!(50, sum(20, 30));
+//     assert_eq!(2.46, sum(1.23, 1.23));
+
+//     println!("Success!");
+// }
+
+
+
+// Struct and impl 
+
+// implement struct Point to make it work
+
+// struct Point<T> {
+//     x: T,
+//     y: T,
+// }
+
+// fn main() {
+//     let integer = Point { x: 5, y: 10 };
+//     let float = Point { x: 1.0, y: 4.0 };
+
+//     println!("success");
+// }
+
+
+
+// Modify this struct to make the code work 
+// struct Point<T> {
+//     x: T,
+//     y: String,
+// }
+struct Point<T, U> {
+    x: T,
+    y: U,
 }
-
-// Implement TrafficLightColor with a method.
-
-impl TrafficLightColor {
-    fn color(&self) -> &str {
-        match self {
-            Self::Yellow => "yellow",
-            Self::Red => "red",
-            Self::Green => "green",
-        }
-    }
-}
-
 
 fn main() {
-    let c: TrafficLightColor = TrafficLightColor::Yellow;
+    // Dont modify this code.
+    // let p = Point{x: 5, y : "hello".to_string()};
+    let p: Point<i32, String> = Point{x: 5, y : "hello".to_string()};
 
-    assert_eq!(c.color(), "yellow"); 
-
-    println!("{:?}", c);
+    println!("Success!");
 }
+
 
 
