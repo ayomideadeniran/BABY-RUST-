@@ -2716,18 +2716,229 @@
 //     x: T,
 //     y: String,
 // }
-struct Point<T, U> {
-    x: T,
-    y: U,
+
+
+
+
+// struct Point<T, U> {
+//     x: T,
+//     y: U,
+// }
+
+
+
+// fn main() {
+//     // Dont modify this code.
+//     // let p = Point{x: 5, y : "hello".to_string()};
+//     let p: Point<i32, String> = Point{x: 5, y : "hello".to_string()};
+
+//     println!("Success!");
+// }
+
+
+// Add generics for Val to make the code work, DON'T modify the code in main.
+
+// struct Val<T> {
+//     Val: T,
+// }
+
+// impl <T> Val<T> {
+//     fn value(&self) -> &T {
+//         &self.val
+//     }
+// }
+
+
+// fn main() {
+
+//     let x = Val{ val: 3.0 };
+//     let y Val { val: "hello".to_String()};
+//     println!("{}, {}",  x.value(), y.value()); 
+// }
+
+
+
+// This is complicated rust code that took me hours to Understand
+
+// #[derive(Debug)]
+
+// struct Point<T, U> {
+//     x: T,
+//     y: U,
+// }
+
+// impl<T, U> Point<T, U> {
+
+//     // Implement mixup method to make it work, DON'T modify other code.
+    
+//     fn mixup<V, W>(self, other: Point<V, W>) -> Point<T, W> {
+//         Point {
+//             x: self.x, // Correct field name
+//             y: other.y,
+//         }
+//     }
+// }
+
+// // Step-by-Step Execution:
+
+//     // p1.mixup(p2):
+//     //     self refers to p1 (Point { x: 5, y: 10 }).
+//     //     other refers to p2 (Point { x: "hello", y: '🦀' }).
+
+//     // Inside the mixup method:
+//     //     x: self.x: Take x from p1 (5).
+//     //     y: other.y: Take y from p2 ('🦀').
+
+//     // Return Value:
+//     //     A new Point is created: Point { x: 5, y: '🦀' }.
+
+
+
+// fn main() {
+//     let p1: Point<i32, i32> = Point { x: 5, y: 10 };
+//     let p2: Point<&str, char> = Point { x: "hello", y: '🦀' };
+
+//     let p3: Point<i32, char> = p1.mixup(p2);
+
+//     assert_eq!(p3.x, 5);
+//     assert_eq!(p3.y, '🦀');
+
+//     // this is Succesfully printing
+
+//     println!("{:?}", p3);
+//     println!("Success");
+// }
+ 
+
+
+
+// Fix the errors to make the code works
+
+// impl Point<f64> means this method will only be available for Point instances where T is f64.
+
+// struct Point<T> {
+//     x: T,
+//     y: T,
+// }
+
+// impl Point<f64> {
+//     fn distance_from_origin(&self) -> f64 {
+//         (self.x.powi(2) + self.y.powi(2)).sqrt()
+//     }
+// }
+
+// fn main() {
+//     let p: Point<f64> = Point{ x: 5.0, y: 10.0 };
+//     println!("{}", p.distance_from_origin());
+// }
+
+
+
+                                // CONST GENERICS
+
+// <T, const N: usize> is part of the struct type, it means Array<i32, 3> and Array<i32, 4> are different types.
+
+
+
+
+// struct Array<T, const N: usize> {
+//     data: [T; N]
+// }
+
+// fn main() {
+//     let arrays: [Array<i32, 3>; 3] = [
+//         Array{
+//             data: [1, 2, 3],
+//         },
+//         Array {
+//             data: [1, 2, 3],
+//         },
+//         Array {
+//             data: [1, 2, 3],
+//         }
+//     ];
+
+
+
+//     let arrays: [Array<f64, 2>; 3] = [
+//         Array{
+//             data: [1.0, 2.0],
+//         },
+//         Array {
+//             data: [3.0, 4.0],
+//         },
+//         Array {
+//             data: [5.0, 6.0],
+//         }
+//     ];
+
+//     println!("Success!");
+// }
+
+ 
+
+// Fill in the two impl block to make the code work.
+// Don't modify the code in 'main'.
+// trait Hello {
+//     fn say_hi(&self) -> String {
+//         String::from("hi") // Default implementation for say_hi
+//     }
+
+//     fn say_something(&self) -> String; // Must be implemented by structs
+// }
+
+// struct Student {}
+
+// impl Hello for Student {
+//     fn say_something(&self) -> String {
+//         String::from("I'm a Good Student") // Implementing the required method
+//     }
+// }
+
+// struct Teacher {}
+
+// impl Hello for Teacher {
+//     // Overriding the default say_hi implementation
+//     fn say_hi(&self) -> String {
+//         String::from("Hi, I'm your new teacher")
+//     }
+
+//     // Implementing the required method
+//     fn say_something(&self) -> String {
+//         String::from("I'm not a bad teacher")
+//     }
+// }
+
+// fn main() {
+//     let s = Student {};
+//     assert_eq!(s.say_hi(), "hi"); // Using the default implementation of say_hi
+//     assert_eq!(s.say_something(), "I'm a Good Student"); // Custom implementation for Student
+
+//     let t = Teacher {};
+//     assert_eq!(t.say_hi(), "Hi, I'm your new teacher"); // Custom implementation for Teacher
+//     assert_eq!(t.say_something(), "I'm not a bad teacher"); // Custom implementation for Teacher
+
+//     println!("Success!");
+// }
+
+
+
+
+
+// Derive 
+// The compiler is of providing basic implementions for some traits via the  #[derive]
+// Attribute. For more info, Please visit here.
+
+// 'Centimeters' a tuple that can be compared 
+#[derive(PartialEq, PartiallOrd)]
+struct Centimeters(f64);
+
+// `Inches`  a tuple struct that can be printed
+#[derive(Debug)]
+struct Inches(i32);
+
+impl Inches {
+    fn to_centimeters(&self) -> Centimeters {
+        let (&Inches) = self
+    }
 }
-
-fn main() {
-    // Dont modify this code.
-    // let p = Point{x: 5, y : "hello".to_string()};
-    let p: Point<i32, String> = Point{x: 5, y : "hello".to_string()};
-
-    println!("Success!");
-}
-
-
-
