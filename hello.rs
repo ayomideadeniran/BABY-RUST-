@@ -2354,26 +2354,14 @@
 //     }
 // }
 
-
-
-
-
-
-
-// I am here to know the different between Struct and match 
-
-
+// I am here to know the different between Struct and match
 
 // Working with Struct
-
-
 
 // struct Point {
 //     x: i32,
 //     y: i32,
 // }
-
-
 
 // fn main() {
 //     let point = Point { x: 5, y: 10 };
@@ -2389,9 +2377,6 @@
 //         Point { x, y } => println!("Point is at ({}, {})", x, y),
 //     }
 // }
-
-
-
 
 // Matching  With enum
 
@@ -2420,12 +2405,6 @@
 //     }
 // }
 
-
-
-
-
-
-
 // Fix the errors
 
 // enum Message {
@@ -2437,7 +2416,7 @@
 
 //     match msg {
 //         Message::Hello {
-//             id: id @ 3..=7, 
+//             id: id @ 3..=7,
 //         } => println!("Found an id in range [3, 7]: {}", id),
 //         Message::Hello { id: newid @ ( 10 | 11 | 12 ) } => {
 //             println!("Found an id in another range [10, 12]: {}", newid)
@@ -2446,12 +2425,9 @@
 //     }
 // }
 
-
-
 // A match guard ia na additional if condition specified after the pattern in a match arm that must also match, along with the pattern matching, for that arm to be chosen.
 
 // Fill in the blank to make the code work, `split` MUST be used
-
 
 // fn main() {
 //     let num = Some(4);
@@ -2459,18 +2435,17 @@
 //     match num {
 //         Some(x) if x < split => assert!(x < split),
 //         Some(x) => assert!(x >= split),
-//         None => (), 
+//         None => (),
 //     }
 
 //     println!("Success!");
 // }
 
-
 // ignoring remaining parts of the value using ..
- 
-// FIll the blank to mak ethe code work 
 
-//   Fix the error with least changing 
+// FIll the blank to mak ethe code work
+
+//   Fix the error with least changing
 // Dont remove any code line
 
 // fn main() {
@@ -2484,7 +2459,7 @@
 //     println!("{}", v); // Output: hello, world!
 // }
 
-                        // Example Method
+// Example Method
 // #[derive(Debug)]
 
 // struct Rectangle {
@@ -2498,25 +2473,20 @@
 //     }
 // }
 
+// Associated Functions and Methods
 
+// Methods :: Methods are similar to functions: Declare with fn, have parameters and a return value.
+//  Unlike functions, methods are defined wihin the context of a struct(or an enum or a trait object),
+//  and their first parameter is always self , which represent the instance of the struct the method is being called on.
 
-
-                // Associated Functions and Methods
-                
-                
-                // Methods :: Methods are similar to functions: Declare with fn, have parameters and a return value.
-                //  Unlike functions, methods are defined wihin the context of a struct(or an enum or a trait object),
-                //  and their first parameter is always self , which represent the instance of the struct the method is being called on.
-                
-                
-                // Associated Functions and Methods
+// Associated Functions and Methods
 // struct Rectangle {
 //     width: u32,
 //     height: u32,
 // }
 
 // impl Rectangle {
-//     // Complete the area method which return the area of a Rectangle. 
+//     // Complete the area method which return the area of a Rectangle.
 //     fn area(self) -> u32 {
 //         self.width * self.height
 //     }
@@ -2528,8 +2498,6 @@
 
 //     println!("Success!");
 // }
-
-
 
 // Self Will take the ownership of current struct instance, however, &self will only borrow a reference from the instance.
 
@@ -2544,9 +2512,8 @@
 //     pub fn show_state(self: &Self) {
 //         println!("the current state is {}", self.Color);
 //     }
-    
 
-//     // Fill in the blank, Dont use any variant of `Self`.  
+//     // Fill in the blank, Dont use any variant of `Self`.
 //     pub fn change_state(&mut self) {
 //         self.Color = "green".to_string()
 //     }
@@ -2555,8 +2522,6 @@
 // fn main() {
 //     println!("Success!")
 // }
-
-
 
 // struct TrafficLight {
 //     color: String,
@@ -2585,9 +2550,7 @@
 //     println!("Success!");
 // }
 
-
-
-// multiple impl Block 
+// multiple impl Block
 
 // Each struct is allowed to have multiple impl blocks.
 
@@ -2596,7 +2559,7 @@
 //     height: u32,
 // }
 
-// // Using Multiple `impl` blocks to rewrite the code below 
+// // Using Multiple `impl` blocks to rewrite the code below
 // impl Rectangle {
 //     fn area(&self) -> u32 {
 //         self.width * self.height
@@ -2612,9 +2575,6 @@
 // fn main() {
 //     println!("Success!");
 // }
-
-
-
 
 // Enums
 
@@ -2640,29 +2600,21 @@
 //     }
 // }
 
-
 // fn main() {
 //     let c: TrafficLightColor = TrafficLightColor::Yellow;
 
-//     assert_eq!(c.color(), "yellow"); 
+//     assert_eq!(c.color(), "yellow");
 
 //     println!("{:?}", c);
 // }
 
+// Generics
 
+// testing  What is Monomorphization?
 
+// When you use generics, the compiler generates specialized versions of the generic code for each concrete type used. This process is called monomorphization, and it ensures that there is no runtime overhead for using generics.
 
-                                // Generics
-
-
-
-
-
-                                // testing  What is Monomorphization?
-
- // When you use generics, the compiler generates specialized versions of the generic code for each concrete type used. This process is called monomorphization, and it ensures that there is no runtime overhead for using generics.
-
-// fn print<T: std::fmt::Debug>(x: T) { 
+// fn print<T: std::fmt::Debug>(x: T) {
 //        println!("{:?}", x);
 // }
 
@@ -2671,10 +2623,7 @@
 //     print("hello");   // Generates print(&str)
 // }
 
-
-
-                            // main Generics Code 
-
+// main Generics Code
 
 // A function call with  explicitly specified type parameters looks like: fun::<A, B, ...>().
 
@@ -2691,9 +2640,7 @@
 //     println!("Success!");
 // }
 
-
-
-// Struct and impl 
+// Struct and impl
 
 // implement struct Point to make it work
 
@@ -2709,23 +2656,16 @@
 //     println!("success");
 // }
 
-
-
-// Modify this struct to make the code work 
+// Modify this struct to make the code work
 // struct Point<T> {
 //     x: T,
 //     y: String,
 // }
 
-
-
-
 // struct Point<T, U> {
 //     x: T,
 //     y: U,
 // }
-
-
 
 // fn main() {
 //     // Dont modify this code.
@@ -2734,7 +2674,6 @@
 
 //     println!("Success!");
 // }
-
 
 // Add generics for Val to make the code work, DON'T modify the code in main.
 
@@ -2748,15 +2687,12 @@
 //     }
 // }
 
-
 // fn main() {
 
 //     let x = Val{ val: 3.0 };
 //     let y Val { val: "hello".to_String()};
-//     println!("{}, {}",  x.value(), y.value()); 
+//     println!("{}, {}",  x.value(), y.value());
 // }
-
-
 
 // This is complicated rust code that took me hours to Understand
 
@@ -2770,7 +2706,7 @@
 // impl<T, U> Point<T, U> {
 
 //     // Implement mixup method to make it work, DON'T modify other code.
-    
+
 //     fn mixup<V, W>(self, other: Point<V, W>) -> Point<T, W> {
 //         Point {
 //             x: self.x, // Correct field name
@@ -2792,8 +2728,6 @@
 //     // Return Value:
 //     //     A new Point is created: Point { x: 5, y: '🦀' }.
 
-
-
 // fn main() {
 //     let p1: Point<i32, i32> = Point { x: 5, y: 10 };
 //     let p2: Point<&str, char> = Point { x: "hello", y: '🦀' };
@@ -2808,9 +2742,6 @@
 //     println!("{:?}", p3);
 //     println!("Success");
 // }
- 
-
-
 
 // Fix the errors to make the code works
 
@@ -2832,14 +2763,9 @@
 //     println!("{}", p.distance_from_origin());
 // }
 
-
-
-                                // CONST GENERICS
+// CONST GENERICS
 
 // <T, const N: usize> is part of the struct type, it means Array<i32, 3> and Array<i32, 4> are different types.
-
-
-
 
 // struct Array<T, const N: usize> {
 //     data: [T; N]
@@ -2858,8 +2784,6 @@
 //         }
 //     ];
 
-
-
 //     let arrays: [Array<f64, 2>; 3] = [
 //         Array{
 //             data: [1.0, 2.0],
@@ -2875,10 +2799,10 @@
 //     println!("Success!");
 // }
 
- 
-
 // Fill in the two impl block to make the code work.
 // Don't modify the code in 'main'.
+
+// // #[derive(Debug)]
 // trait Hello {
 //     fn say_hi(&self) -> String {
 //         String::from("hi") // Default implementation for say_hi
@@ -2887,6 +2811,8 @@
 //     fn say_something(&self) -> String; // Must be implemented by structs
 // }
 
+// #[derive(Debug)]
+
 // struct Student {}
 
 // impl Hello for Student {
@@ -2894,6 +2820,8 @@
 //         String::from("I'm a Good Student") // Implementing the required method
 //     }
 // }
+
+// #[derive(Debug)]
 
 // struct Teacher {}
 
@@ -2915,30 +2843,385 @@
 //     assert_eq!(s.say_something(), "I'm a Good Student"); // Custom implementation for Student
 
 //     let t = Teacher {};
+
+//     let a = t.say_hi();
+
 //     assert_eq!(t.say_hi(), "Hi, I'm your new teacher"); // Custom implementation for Teacher
 //     assert_eq!(t.say_something(), "I'm not a bad teacher"); // Custom implementation for Teacher
 
 //     println!("Success!");
+
+//     println!("{:?}", a);
 // }
 
-
-
-
-
-// Derive 
+// Derive
 // The compiler is of providing basic implementions for some traits via the  #[derive]
 // Attribute. For more info, Please visit here.
 
-// 'Centimeters' a tuple that can be compared 
-#[derive(PartialEq, PartiallOrd)]
-struct Centimeters(f64);
+// centimeter', a tuple struct that can be compared
+// THIS CODE THOSE NOT WORK I HAVE NOT FIX THE ERRORS
+// #[derive(PartialEq, PartialOrd)]
+// struct Centimeter(f64);
 
-// `Inches`  a tuple struct that can be printed
-#[derive(Debug)]
-struct Inches(i32);
+// // `Inches`, a tuple struct that can be printed
+// #[derive(Debug)]
+// struct Inches(i32);
 
-impl Inches {
-    fn to_centimeters(&self) -> Centimeters {
-        let (&Inches) = self
-    }
-}
+// impl Inches {
+//     fn to_centimeters(self) -> Centimeters {
+//         let &Inches(inches) = self;
+
+//         Centimeter(inches as f64 * 2.54)
+//     }
+// }
+
+// Add some Attribute to make the code work!
+// DON'T modify other code!
+// struct Seconds(i32);
+
+// use std::ops;
+
+// // Implement fn multiply to make the code work.
+// // As mentioned above, '+' needs 'T' to implement 'std::ops::Add' Trait.
+// // So, what about '*'? You can find the answer here: link
+
+// fn multiply<T: std::ops::Mul<Output = T>>(a: T, b:T) -> T {
+//     a * b // a.mul(b)
+// }
+
+// fn main() {
+//     assert_eq!(6, multiply(2u8, 3u8));
+//     assert_eq!(5.0, multiply(1.0, 5.0));
+
+//     println!("Success!");
+// }
+
+// // Fix the errors, DON'T modify the code in `main`.
+// use std::ops;
+
+// struct Foo;
+// struct Bar;
+
+// #[derive(PartialEq, Debug)]
+// struct FooBar;
+// #[derive(PartialEq, Debug)]
+// struct BarFoo;
+
+// // 'std::ops::Add' trait is used to specify the functionality of '+',
+// // Here, we make 'Add<bar>' - the trait for addition with a RHS of type 'Bar'.
+// // The following block implements the operation Foo + Bar = FooBar
+
+// // Foo + Bar -> Foo.add(Bar)
+// // Foo + Foo -> Foo.add(Foo)
+
+// impl ops::Add<Bar> for Foo {
+//     type Output = FooBar;
+
+//     fn add(self, _rhs: Bar) -> FooBar {
+//         FooBar
+//     }
+// }
+
+// // Foo - Bar -> Foo.sub(Bar)
+
+// impl ops::sub<Bar> for Foo {
+//     type Output = BarFoo;
+
+//     fn sub(self, -_rhs: Bar) -> BarFoo {
+//         BarFoo
+//     }
+// }
+
+// fn main() {
+//     // Dont Modify the code below.
+//     // You need to derive some trait for FooBar to make it comperatble
+//     assert_eq!(Foo + Bar, FooBar);
+//     assert_eq!(Foo - Bar, BarFoo);
+
+//     println!("Success!");
+// }
+
+// Use trait as function parameter
+
+// instead of a concrete type for the item parameter, we specify the impl specify the keyword
+// and the trait name. This Parameter accept ant type that implement the specified trait.
+//
+
+// implement 'fn Summary' to make the code work.
+// Fix the errors without removing any code line
+// trait Summary {
+//     fn summarize(&self) -> String;
+// }
+
+// #[derive(Debug)]
+// struct Post {
+//     title: String,
+//     author: String,
+//     content: String,
+// }
+
+// impl Summary for Post {
+//     fn summarize(&self) -> String {
+//         format!("The author of post '{}' is {}", self.title, self.author)
+//     }
+// }
+
+// #[derive(Debug)]
+// struct Weibo {
+//     username: String,
+//     content: String,
+// }
+
+// impl Summary for Weibo {
+//     fn summarize(&self) -> String {
+//         format!("{} published a weibo: {}", self.username, self.content)
+//     }
+// }
+
+// fn main() {
+//     let post = Post {
+//         title: "Popular Rust".to_string(),
+//         author: "Sunface".to_string(),
+//         content: "Rust is awesome!".to_string(),
+//     };
+//     let weibo = Weibo {
+//         username: "sunface".to_string(),
+//         content: "Weibo seems to be worse than Tweet".to_string(),
+//     };
+
+//     summarize(&post);
+//     summarize(&weibo);
+
+//     println!("{:?}", post);
+//     println!("{:?}", weibo);
+// }
+
+// // Implement 'fn summarize' below.
+// fn summarize(a: &impl Summary) {
+//     let output: String = a.summarize();
+//     println!("{}", output);
+// }
+
+// Learning with Practise
+
+// Enum and Pattern Matching
+
+// enum TrafficLight {
+//     Red,
+//     Yellow,
+//     Green,
+// }
+
+// fn main() {
+//     let light = TrafficLight::Red;
+
+//     match light {
+//         TrafficLight::Red => println!("Stop!"),
+//         TrafficLight::Yellow => println!("Slow down!"),
+//         TrafficLight::Green => println!("Goo!"),
+//         // Missing a match arm for `TrafficLight::Green`
+//     }
+// }
+
+// Example with Option
+
+// fn divide(a: i32, b: i32) -> Option<i32> {
+//     if b == 0 {
+//         None
+//     } else {
+//         Some(a / b)
+//     }
+// }
+
+// fn main() {
+//     match divide(10, 2) {
+//         Some(result1) => println!("Result: {}", result1),
+//         None => println!("Cannot divide by zero"),
+//     }
+// }
+
+// Example with Result
+
+// fn divide(a: i32, b: i32) -> Result<i32, String> {
+//     if b == 0 {
+//         Err(String::from("Cannot divide by zero"))
+//     } else {
+//         Ok(a / b)
+//     }
+// }
+
+// fn main() {
+//     match divide(10, 0) {
+//         Ok(result) => println!("Result: {}", result),
+//         Err(error) => println!("Error: {}", error),
+//     }
+// }
+
+// Example with tuples
+
+// fn main() {
+
+//     let point = (3, 0, 4);
+
+//     match point {
+//         (0, y, 0) => println!("Point lies on the y-axis at {}", y),
+//         (x, 0, 0) => println!("Point lies on the x-axis at {}", x),
+//         (x, y, 0) => println!("Point is at ({}, {})", x, y),
+//         _ => println!("none of the above"),
+//     }
+
+// }
+
+// Binding with @
+
+// fn main() {
+//     // let number = None;
+//     let number = Some(6);
+
+//     match number {
+//         Some(n @ 1..=10) => println!("Matched a number in range 1-10: {}", n),
+//         Some(_) => println!("Matched some other number"),
+//         None => println!("No number"),
+//     }
+// }
+
+// // Guard
+// fn main() {
+//     let number = 5;
+
+//     match number {
+//         n if n % 2 == 0 => println!("Even number: {}", n),
+//         n if n % 2 != 0 => println!("Odd number: {}", n),
+//         _ => println!("Something else"),
+//     }
+// }
+
+// Enum and Pattern Matching
+
+// enum TrafficLight {
+//     Red,
+//     Yellow,
+//     Green,
+// }
+
+// fn main() {
+//     let light = TrafficLight::Red;
+
+//     match light {
+//         TrafficLight::Red => println!("Stop!"),
+//         TrafficLight::Yellow => println!("Slow down!"),
+//         TrafficLight::Green => println!("Goo!"),
+//         // Missing a match arm for `TrafficLight::Green`
+//     }
+// }
+
+// Example 2: Struct and Implementation
+
+// struct Rectangle {
+//     width: u32,
+//     height: u32,
+// }
+
+// impl Rectangle {
+//     fn area(&self) -> u32 {
+//         self.width * self.height
+//     }
+
+//     fn can_hold(&self, other: Rectangle) -> bool {
+//         // self.width > other.width && self.height > other.height
+//         other.width > self.width && self.height > other.height
+//     }
+// }
+
+// fn main() {
+//     let rect1 = Rectangle { width: 30, height: 50 };
+//     let rect2 = Rectangle { width: 40, height: 20 };
+
+//     println!("Can rect1 hold rect2? {}", rect1.can_hold(rect2));
+//     // println!("Can rect1 hold rect2? {}", rect1.area());
+// }
+
+// Enum with Associated Data
+
+// enum Message {
+//     Quit,
+//     Move { x: i32, y: i32 },
+//     Write(String),
+//     ChangeColor(i32, i32, i32),
+// }
+
+// fn process_message(msg: Message) {
+//     match msg {
+//         Message::Quit => println!("Quit"),
+//         Message::Move { x, y } => println!("Move to ({}, {})", x, y),
+//         Message::Write(text) => println!("Write: {}", text),
+//         Message::ChangeColor(r, g, b) => println!("Changing color({}, {}, {})", r, g, b),
+//         // Missing a match arm for `Message::ChangeColor`
+//     }
+// }
+
+// fn main() {
+//     let msg = Message::ChangeColor(255, 0, 0);
+//     process_message(msg);
+// }
+
+// Example 4: Struct and Ownership
+
+// struct User {
+//     username: String,
+//     email: String,
+//     sign_in_count: u64,
+//     active: bool,
+// }
+
+// fn print_user(user: &User) {
+//     println!("Username: {}", user.username);
+//     println!("Email: {}", user.email);
+//     println!("Sign-in count: {}", user.sign_in_count);
+//     println!("Active: {}", user.active);
+// }
+
+// fn main() {
+//     let user = User {
+//         username: String::from("john_doe"),
+//         email: String::from("john@example.com"),
+//         sign_in_count: 1,
+//         active: true,
+//     };
+
+//     print_user(&user);
+//     print_user(&user); // Error: `user` has been moved
+// }
+
+// Example 5: Enum and Methods
+
+// enum Shape {
+//     Circle(f64),
+//     Rectangle(f64, f64),
+// }
+
+// impl Shape {
+//     fn area(&self) -> f64 {
+//         match self {
+//             Shape::Circle(radius) => 3.14 * radius * radius,
+//             Shape::Rectangle(width, height) => width * height,
+//         }
+//     }
+
+//     fn double_size(&mut self) {
+//         match self {
+//             Shape::Circle(radius) => *radius *= 2.0,
+//             Shape::Rectangle(width, height) => {
+//                 *width *= 2.0;
+//                 *height *= 2.0;
+//             }
+//         }
+//     }
+// }
+
+// fn main() {
+//     let mut shape = Shape::Rectangle(3.0, 4.0);
+//     println!("Area: {}", shape.area());
+//     shape.double_size();
+//     println!("New area: {}", shape.area());
+// }
