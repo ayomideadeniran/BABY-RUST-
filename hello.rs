@@ -3195,33 +3195,34 @@
 
 // Example 5: Enum and Methods
 
-// enum Shape {
-//     Circle(f64),
-//     Rectangle(f64, f64),
-// }
+enum Shape {
+    Circle(f64),
+    Rectangle(f64, f64),
+}
 
-// impl Shape {
-//     fn area(&self) -> f64 {
-//         match self {
-//             Shape::Circle(radius) => 3.14 * radius * radius,
-//             Shape::Rectangle(width, height) => width * height,
-//         }
-//     }
+impl Shape {
+    fn area(&self) -> f64 {
+        match self {
+            Shape::Circle(radius) => 3.14 * radius * radius,
+            Shape::Rectangle(width, height) => width * height,
+        }
+    }
 
-//     fn double_size(&mut self) {
-//         match self {
-//             Shape::Circle(radius) => *radius *= 2.0,
-//             Shape::Rectangle(width, height) => {
-//                 *width *= 2.0;
-//                 *height *= 2.0;
-//             }
-//         }
-//     }
-// }
+    fn double_size(&mut self) {
+        match self {
+            Shape::Circle(radius) => *radius *= 2.0,
+            Shape::Rectangle(width, height) => {
+                *width *= 2.0;
+                *height *= 2.0;
+            }
+        }
+    }
+}
 
-// fn main() {
-//     let mut shape = Shape::Rectangle(3.0, 4.0);
-//     println!("Area: {}", shape.area());
-//     shape.double_size();
-//     println!("New area: {}", shape.area());
-// }
+fn main() {
+    let mut shape = Shape::Rectangle(3.0, 4.0);
+    println!("Area: {}", shape.area());
+    shape.double_size();
+    println!("New area: {}", shape.area());
+}
+ 
