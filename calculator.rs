@@ -57,4 +57,3 @@ fn get_input_as_string() -> String {
     input.trim().to_string()
 }
 
-

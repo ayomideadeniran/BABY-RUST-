@@ -10,6 +10,11 @@ fn main() {
     println!("Enter the second word!");
     let second_word = get_word();
 
+    // Get the third word
+    // println!("Enter the third word!");
+    // let third_word = get_word();
+    // println!("The third word is: {}", third_word);
+
     // Compare the inputs
     if first_word == second_word {
         println!("🥂🥂🥂 The inputs are the same: {}", first_word);

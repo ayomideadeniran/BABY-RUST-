@@ -1,11 +1,13 @@
 use std::io;
 
+
 struct User {
     first_name: String,
     last_name: String,
     email: String,
     password: String,
 }
+
 
 fn main() {
     println!("\n=== User Registration Form ===\n");
@@ -54,6 +56,7 @@ fn main() {
     println!("Verification email sent to: {}", user.email);
 }
 
+
 fn get_word() -> String {
     let mut input = String::new();
     io::stdin()
@@ -61,4 +64,6 @@ fn get_word() -> String {
         .expect("Failed to read line");
     input.trim().to_string()
 }
+
+
 
