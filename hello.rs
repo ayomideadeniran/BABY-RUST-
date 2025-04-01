@@ -3200,7 +3200,21 @@ enum Shape {
     Rectangle(f64, f64),
 }
 
+
+
+fn main() {
+    let mut shape = Shape::Rectangle(3.0, 4.0);
+    println!("Area: {}", shape.area());
+    shape.double_size();
+    println!("New area: {}", shape.area());
+}
+
+
+
+
+
 impl Shape {
+
     fn area(&self) -> f64 {
         match self {
             Shape::Circle(radius) => 3.14 * radius * radius,
@@ -3217,12 +3231,57 @@ impl Shape {
             }
         }
     }
+
 }
 
-fn main() {
-    let mut shape = Shape::Rectangle(3.0, 4.0);
-    println!("Area: {}", shape.area());
-    shape.double_size();
-    println!("New area: {}", shape.area());
-}
- 
+
+
+
+
+
+
+
+// enum Shapes {
+//     Circle(f64),
+//     Rectangle(f64, f64),
+// }
+
+// // Implementing methods for shape
+
+// impl Shape {
+//     // The Area Function    
+//     fn area(&self) -> f64 {
+//         match self {
+//             Shape::Circle(radius) => 3.14 * radius * radius,
+//             Shape::Rectangle(width, height) => width * height,
+//         }
+//     }
+
+//     // The double_size
+//     fn double_size(&mut self) {
+//         match self {
+//             shape::Circle(radius) => *radius *= 2.0,
+//             shape::Rectangle(width, height) => {
+//                 *width *= 2.0;
+//                 *height *= 2.0;
+//             }
+//         }
+//     }
+
+//     // The main function
+//     fn main() {
+//         let mut shape = shape::Rectangle(3.0, 4.0);
+//         println!("Area: {}", shape.area());
+//         shape.double_size();
+//         println!("New area: {}", shape.area());
+
+//     }
+// }
+
+
+
+
+
+
+
+
